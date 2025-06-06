@@ -93,7 +93,7 @@ useEffect(() => {
 
 
   return (
-    <div>
+    <div className="container mx-auto sm:px-6 py-4 lg:px-8 min-h-[75vh]">
       <DataTable 
       columns={columns(Number(indice))} 
       data={tableData}
