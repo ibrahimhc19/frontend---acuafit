@@ -38,12 +38,12 @@ export default function DashboardLayout() {
       // return user.data;
 
       await axios.get(`${apiUrl}sanctum/csrf-cookie`, {
-        // withCredentials: true,
+        withCredentials: true,
       });
 
       const response = await axios.post(`${apiUrl}logout`, {
-        // withCredentials: true,
-        // withXSRFToken: true,
+        withCredentials: true,
+        withXSRFToken: true,
         headers: {
           Accept: "application/json",
         },
