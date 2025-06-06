@@ -30,8 +30,8 @@ export default function DashboardLayout() {
       const apiUrl = import.meta.env.VITE_APP_API_URL ?? "";
 
       const user = await axios.get(`${apiUrl}user`, {
-        // withCredentials: true,
-        // withXSRFToken: true,
+        withCredentials: true,
+        withXSRFToken: true,
       });
 
       console.log(user);
