@@ -49,14 +49,16 @@ export function LoginForm({
       const apiUrl = import.meta.env.VITE_APP_API_URL ?? "";
 
       await axios.get(`${apiUrl}sanctum/csrf-cookie`, {
-        withCredentials: true
+        withCredentials: true,
+        withXSRFToken: true
       });
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const response = await axios.post(`${apiUrl}login`, data, {
         headers: {
           Accept: "application/json",
-          withCredentials: true
+          withCredentials: true,
+          withXSRFToken: true
         },
       });
 
