@@ -16,9 +16,7 @@ export default function StudentsPage() {
   const [url, setUrl] = useState(
     `${import.meta.env.VITE_APP_API_URL}api/estudiantes`
   );
-  // const [url, setUrl] = useState(
-  //   'https://web-production-3bb6c.up.railway.app/api/estudiantes'
-  // );
+
   const [indice, setIndice] = useState(1);
 
 //   const handlePageChange = (type: 'first' | 'previous' | 'next' | 'last') => {
