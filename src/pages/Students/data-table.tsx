@@ -47,8 +47,8 @@ export function DataTable<TData, TValue>({columns, data, previousPage, nextPage,
 
   return (
     <>
-      <div className="flex flex-row justify-between">
-        <h1 className="scroll-m-20 text-3xl font-semibold text-primary">
+      <div className="flex flex-row justify-between items-center mb-4 sm:mb-0">
+        <h1 className="scroll-m-20 flex-wrap text-2xl sm:text-3xl font-semibold text-primary">
           Listado de Estudiantes
         </h1>
         <div className="flex items-center justify-end space-x-2 py-4">

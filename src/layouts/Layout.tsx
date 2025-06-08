@@ -1,6 +1,7 @@
 // https://tailwindcomponents.com/component/tailwind-css-admin-dashboard-layout
 // https://gist.github.com/Klerith/3949f1c8b884d7101e378dfb668f0f3a
 
+import { useState } from "react";
 import {Link, Outlet} from "react-router-dom";
 
 const links = [
@@ -12,6 +13,12 @@ const links = [
 ];
 
 export default function DashboardLayout() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <>
       <nav className="bg-white border-b border-gray-200 fixed z-30 w-full">
@@ -20,13 +27,14 @@ export default function DashboardLayout() {
             <div className="flex items-center justify-start">
               <button
                 id="toggleSidebarMobile"
-                aria-expanded="true"
+                aria-expanded={isSidebarOpen}
                 aria-controls="sidebar"
                 className="lg:hidden mr-2 text-gray-600 hover:text-gray-900 cursor-pointer p-2 hover:bg-gray-100 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100 rounded"
+                onClick={toggleSidebar}
               >
                 <svg
                   id="toggleSidebarMobileHamburger"
-                  className="w-6 h-6"
+                  className={`w-6 h-6 ${isSidebarOpen ? "hidden" : ""}`}
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +47,7 @@ export default function DashboardLayout() {
                 </svg>
                 <svg
                   id="toggleSidebarMobileClose"
-                  className="w-6 h-6 hidden"
+                  className={`w-6 h-6 ${!isSidebarOpen ? "hidden" : ""}`}
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -73,8 +81,10 @@ export default function DashboardLayout() {
       <div className="flex overflow-hidden bg-white pt-16">
         <aside
           id="sidebar"
-          className="fixed hidden z-20 h-full top-0 left-0 pt-16 lg:flex flex-shrink-0 flex-col w-40 transition-width duration-75"
           aria-label="Sidebar"
+          className={`fixed z-20 h-full top-0 left-0 pt-16 flex flex-shrink-0 flex-col w-40 transition-transform duration-500 ease-in-out lg:translate-x-0 ${
+            isSidebarOpen ? "translate-x-0 w-60" : "-translate-x-full"
+          } lg:flex`}
         >
           <div className="relative flex-1 flex flex-col min-h-0 borderR border-gray-200 bg-white pt-0">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
@@ -84,7 +94,7 @@ export default function DashboardLayout() {
                     <li key={link.href}>
                       <Link
                         to={link.href}
-                        className="text-base capitalize text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-primary hover:text-muted group"
+                        className={`text-base capitalize text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-primary hover:text-muted group ${isSidebarOpen ? "justify-center" : '' }`}
                       >
                         <span className="ml-3">{link.name}</span>
                       </Link>
@@ -96,8 +106,11 @@ export default function DashboardLayout() {
           </div>
         </aside>
         <div
-          className="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"
+          className={`bg-gray-900 fixed inset-0 z-10 transition-opacity duration-500 ease-in-out lg:hidden ${
+            isSidebarOpen ? "opacity-50" : "opacity-0 invisible"
+          }`}
           id="sidebarBackdrop"
+          onClick={toggleSidebar}
         ></div>
         <div
           id="main-content"
@@ -106,15 +119,15 @@ export default function DashboardLayout() {
           <main>
             <div className="pt-6 px-4">
               <div className="w-full min-h-[calc(100vh-230px)]">
-                <div className="bg-white shadow rounded-lg ">
+                <div className="sm:bg-white sm:shadow sm:rounded-lg ">
                   <Outlet/>
                 </div>
               </div>
             </div>
           </main>
-          <footer className="bg-white md:flex md:items-center md:justify-between shadow rounded-lg p-4 md:p-6 xl:p-8 my-6 mx-4">
+          <footer className="bg-white md:flex md:items-center justify-center shadow rounded-lg p-4 md:p-6 xl:p-8 my-6 mx-4">
             <ul></ul>
-            <div className="flex sm:justify-center space-x-6">
+            <div className="flex justify-center space-x-6">
               <a href="#" className="text-gray-500 hover:text-gray-900">
                 <svg
                   className="h-5 w-5"
