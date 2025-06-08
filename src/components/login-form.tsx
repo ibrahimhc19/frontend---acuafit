@@ -29,7 +29,7 @@ interface IFormInput {
   password: string;
 }
 
-export function LoginForm({
+export default function LoginPage({
   className,
   ...props
 }: React.ComponentProps<"div">) {
