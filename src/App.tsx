@@ -14,7 +14,8 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Home from "./pages/Home.tsx";
 import Parents from "./pages/Parents.tsx";
 import Payments from "./pages/Payments.tsx";
-import { LoginForm } from "./components/login-form.tsx";
+import Login from "./components/login-form.tsx";
+import Registration from "./pages/Registration";
 
 export default function App() {
   return (
@@ -35,7 +36,8 @@ export default function App() {
           </Route>
           <Route path="*" element={<NotFoundPage />} />
           {/* <Route path="login" element={<Login />} /> */}
-          <Route path="login" element={<LoginForm />} />
+          <Route path="login" element={<Login />} />
+          <Route path="registrar" element={<Registration />} />
         </Routes>
       </Router>
     </div>

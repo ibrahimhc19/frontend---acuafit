@@ -57,3 +57,26 @@ export interface DataTableProps<TData, TValue> {
   nextPage: string | null
   previousPage: string | null
 }
+
+export interface FormData {
+  nombres_estudiante: string;
+  apellidos_estudiante: string;
+  tipo_documento_estudiante: string;
+  numero_documento_estudiante: string;
+  requiere_acudiente: boolean;
+  nombre_acudiente: string;
+  numero_documento_acudiente: string;
+  email_contacto: string;
+  direccion_residencia: string;
+  celular_contacto: string;
+  numero_rut: string;
+  edad_estudiante: string;
+  sede: string;
+  grupo_horario: string;
+  autorizacion_imagen: string;
+  acuerdo_reglamento: boolean;
+}
+
+export interface FormErrors {
+  [key: string]: string;
+}
