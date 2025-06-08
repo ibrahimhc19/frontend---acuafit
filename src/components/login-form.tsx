@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
 import { AlertCircle } from "lucide-react"
  
@@ -49,7 +49,7 @@ export function LoginForm({
       const apiUrl = import.meta.env.VITE_APP_API_URL ?? "";
 
       await axios.get(`${apiUrl}sanctum/csrf-cookie`, {
-        withCredentials: true,
+        // withCredentials: true, 
         withXSRFToken: true
       });
 
@@ -57,8 +57,8 @@ export function LoginForm({
       const response = await axios.post(`${apiUrl}login`, data, {
         headers: {
           Accept: "application/json",
-          withCredentials: true,
-          withXSRFToken: true
+          // withCredentials: true,
+          // withXSRFToken: true
         },
       });
 
