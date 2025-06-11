@@ -18,6 +18,7 @@ export default function StudentsPage() {
   );
 
   const [indice, setIndice] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
 //   const handlePageChange = (type: 'first' | 'previous' | 'next' | 'last') => {
 //   switch (type) {
@@ -59,7 +60,6 @@ const func = (page:string) =>{
 
 useEffect(() => {
      axios
-      // .get(url)
       // .get("/mock/data.json")
       .get(url)
       .then((response) => {
@@ -69,6 +69,7 @@ useEffect(() => {
           apiResponse.data &&
           Array.isArray(apiResponse.data)
         ) {
+          setCurrentPage(apiResponse.current_page)
           setTableData(apiResponse.data);
           setIndice(apiResponse.from)
           setFirstPage(apiResponse.first_page_url);
@@ -98,6 +99,7 @@ useEffect(() => {
       nextPage={nextPage}
       previousPage={previousPage}
       handlePageChange={handlePageChange}
+      currentPage={currentPage}
       />
     </div>
   )

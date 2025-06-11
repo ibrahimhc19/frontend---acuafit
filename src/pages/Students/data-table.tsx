@@ -28,8 +28,21 @@ import {
   ChevronsRight,
 } from "lucide-react";
 
-export function DataTable<TData, TValue>({columns, data, previousPage, nextPage, handlePageChange}: DataTableProps<TData, TValue>) {
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+} from "@/components/ui/pagination";
 
+export function DataTable<TData, TValue>({
+  columns,
+  data,
+  previousPage,
+  nextPage,
+  currentPage,
+  handlePageChange,
+}: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
   const table = useReactTable({
@@ -51,12 +64,12 @@ export function DataTable<TData, TValue>({columns, data, previousPage, nextPage,
         <h1 className="scroll-m-20 flex-wrap text-2xl sm:text-3xl font-semibold text-primary">
           Listado de Estudiantes
         </h1>
-        <div className="flex items-center justify-end space-x-2 py-4">
+        <div className="flex items-center justify-end py-4">
           <Button
             variant="outline"
             size="sm"
-            onClick={() => handlePageChange('first')}
-            disabled={previousPage === null ? true: false}
+            onClick={() => handlePageChange("first")}
+            disabled={previousPage === null ? true : false}
             className="hover:bg-primary hover:text-white"
           >
             <ChevronsLeft />
@@ -64,26 +77,33 @@ export function DataTable<TData, TValue>({columns, data, previousPage, nextPage,
           <Button
             variant="outline"
             size="sm"
-            onClick={() => handlePageChange('previous')}
-            disabled={previousPage === null ? true: false}
-            className="hover:bg-primary hover:text-white"
+            onClick={() => handlePageChange("previous")}
+            disabled={previousPage === null ? true : false}
+            className="hover:bg-primary hover:text-white mx-2"
           >
             <ChevronLeft />
           </Button>
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationLink>{currentPage}</PaginationLink>
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
           <Button
             variant="outline"
             size="sm"
-            onClick={() => handlePageChange('next')}
-            disabled={nextPage === null ? true: false}
-            className="hover:bg-primary hover:text-white"
+            onClick={() => handlePageChange("next")}
+            disabled={nextPage === null ? true : false}
+            className="hover:bg-primary hover:text-white mx-2"
           >
             <ChevronRight />
           </Button>
           <Button
             variant="outline"
             size="sm"
-            onClick={() => handlePageChange('last')}
-            disabled={nextPage === null ? true: false}
+            onClick={() => handlePageChange("last")}
+            disabled={nextPage === null ? true : false}
             className="hover:bg-primary hover:text-white"
           >
             <ChevronsRight />

@@ -56,6 +56,7 @@ export interface DataTableProps<TData, TValue> {
   handlePageChange: (type: 'first' | 'previous' | 'next' | 'last') => void
   nextPage: string | null
   previousPage: string | null
+  currentPage: number
 }
 
 export interface FormData {
