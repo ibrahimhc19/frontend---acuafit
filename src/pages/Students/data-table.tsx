@@ -34,6 +34,7 @@ import {
   PaginationItem,
   PaginationLink,
 } from "@/components/ui/pagination";
+import { Input } from "@/components/ui/input";
 
 export function DataTable<TData, TValue>({
   columns,
@@ -60,10 +61,16 @@ export function DataTable<TData, TValue>({
 
   return (
     <>
-      <div className="flex flex-row justify-between items-center mb-4 sm:mb-0">
-        <h1 className="scroll-m-20 flex-wrap text-2xl sm:text-3xl font-semibold text-primary">
+        <h1 className="scroll-m-20 flex-wrap text-center text-3xl font-semibold text-primary">
           Listado de Estudiantes
         </h1>
+      <div className="flex sm:flex-row justify-between items-center mb-4 sm:mb-0 flex-col-reverse">
+        <div className="flex w-full max-w-sm items-center gap-2">
+          <Input type="search" placeholder="Buscar" />
+          <Button type="submit" variant="outline">
+            Buscar
+          </Button>
+        </div>
         <div className="flex items-center justify-end py-4">
           <Button
             variant="outline"
