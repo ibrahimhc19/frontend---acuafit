@@ -61,17 +61,17 @@ export function DataTable<TData, TValue>({
 
   return (
     <>
-        <h1 className="scroll-m-20 flex-wrap text-center text-3xl font-semibold text-primary">
+        <h1 className="scroll-m-20 flex-wrap text-3xl font-semibold text-primary">
           Listado de Estudiantes
         </h1>
-      <div className="flex sm:flex-row justify-between items-center mb-4 sm:mb-0 flex-col-reverse">
-        <div className="flex w-full max-w-sm items-center gap-2">
+      {/* <div className="flex sm:flex-row justify-between items-center mb-4 sm:mb-0 flex-col-reverse"> */}
+        <div className="flex w-full max-w-sm  my-4 gap-2">
           <Input type="search" placeholder="Buscar" />
           <Button type="submit" variant="outline">
             Buscar
           </Button>
         </div>
-        <div className="flex items-center justify-end py-4">
+        {/* <div className="flex items-center justify-end py-4">
           <Button
             variant="outline"
             size="sm"
@@ -115,8 +115,8 @@ export function DataTable<TData, TValue>({
           >
             <ChevronsRight />
           </Button>
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -164,6 +164,53 @@ export function DataTable<TData, TValue>({
             )}
           </TableBody>
         </Table>
+      </div>
+      <div className="flex flex-row justify-end items-center mb-4 sm:mb-0">
+        <div className="flex items-center justify-end py-4">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => handlePageChange("first")}
+            disabled={previousPage === null ? true : false}
+            className="hover:bg-primary hover:text-white"
+          >
+            <ChevronsLeft />
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => handlePageChange("previous")}
+            disabled={previousPage === null ? true : false}
+            className="hover:bg-primary hover:text-white mx-2"
+          >
+            <ChevronLeft />
+          </Button>
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationLink>{currentPage}</PaginationLink>
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => handlePageChange("next")}
+            disabled={nextPage === null ? true : false}
+            className="hover:bg-primary hover:text-white mx-2"
+          >
+            <ChevronRight />
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => handlePageChange("last")}
+            disabled={nextPage === null ? true : false}
+            className="hover:bg-primary hover:text-white"
+          >
+            <ChevronsRight />
+          </Button>
+        </div>
       </div>
     </>
   );
