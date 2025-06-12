@@ -92,7 +92,6 @@ const InscripcionAcuafitForm: React.FC = () => {
                 <Input
                   type="text"
                   id="nombres_estudiante"
-                  
                   {...register("nombres_estudiante", {
                     required: "El nombre del estudiante es obligatorio.",
                   })}
@@ -114,7 +113,6 @@ const InscripcionAcuafitForm: React.FC = () => {
                 <Input
                   type="text"
                   id="apellidos_estudiante"
-                  
                   {...register("apellidos_estudiante", {
                     required: "Los apellidos del estudiante son obligatorios.",
                   })}
@@ -178,7 +176,6 @@ const InscripcionAcuafitForm: React.FC = () => {
                 <Input
                   type="text"
                   id="numero_documento_estudiante"
-
                   {...register("numero_documento_estudiante", {
                     required: "El número de documento es obligatorio.",
                   })}
@@ -194,25 +191,27 @@ const InscripcionAcuafitForm: React.FC = () => {
 
               {/* --- DATOS DEL ACUDIENTE (CONDICIONAL) --- */}
               <div className="mb-4">
-                <div className="flex items-center">
-                  <Input
-                    type="checkbox"
-                    id="requiereAcudiente"
-                    className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                    {...register("requiere_acudiente")}
-                  />
+                <div className="flex flex-col">
                   <label
                     htmlFor="requiereAcudiente"
-                    className="ml-3 block text-sm font-medium text-gray-700"
+                    className=" block text-sm font-medium text-gray-700"
                   >
                     ¿El estudiante es menor de edad y/o requiere datos de
                     acudiente?
                   </label>
+                  <div>
+                    <Input
+                      type="checkbox"
+                      id="requiereAcudiente"
+                      className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                      {...register("requiere_acudiente")}
+                    />
+                  </div>
                 </div>
               </div>
 
               {requiereAcudiente && (
-                <div className="p-4 border border-gray-200 rounded-md mb-6">
+                <div className="py-4  border-gray-200 rounded-md mb-6">
                   <h3 className="font-semibold text-lg mb-4 text-gray-800">
                     Datos del Acudiente
                   </h3>
@@ -226,7 +225,6 @@ const InscripcionAcuafitForm: React.FC = () => {
                     <Input
                       type="text"
                       id="nombre_acudiente"
-                      
                       {...register("nombre_acudiente", {
                         required: requiereAcudiente
                           ? "El nombre del acudiente es obligatorio."
@@ -249,7 +247,6 @@ const InscripcionAcuafitForm: React.FC = () => {
                     <Input
                       type="text"
                       id="numero_documento_acudiente"
-                      
                       {...register("numero_documento_acudiente", {
                         required: requiereAcudiente
                           ? "El documento del acudiente es obligatorio."
@@ -268,55 +265,53 @@ const InscripcionAcuafitForm: React.FC = () => {
               {/* --- DATOS DE CONTACTO --- */}
               <hr className="my-6" />
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="mb-4">
-                  <label
-                    htmlFor="email_contacto"
-                    className="block text-gray-700 font-medium mb-2"
-                  >
-                    Correo electrónico de contacto *
-                  </label>
-                  <Input
-                    type="email"
-                    id="email_contacto"
-                    
-                    {...register("email_contacto", {
-                      required: "El correo es obligatorio.",
-                      pattern: {
-                        value: /^\S+@\S+$/i,
-                        message: "Correo electrónico inválido.",
-                      },
-                    })}
-                  />
-                  {errors.email_contacto && (
-                    <p className={errorTextStyle}>
-                      {errors.email_contacto.message}
-                    </p>
-                  )}
-                </div>
-
-                <div className="mb-4">
-                  <label
-                    htmlFor="celular_contacto"
-                    className="block text-gray-700 font-medium mb-2"
-                  >
-                    Celular de contacto *
-                  </label>
-                  <Input
-                    type="tel"
-                    id="celular_contacto"
-                    
-                    {...register("celular_contacto", {
-                      required: "El número de celular es obligatorio.",
-                    })}
-                  />
-                  {errors.celular_contacto && (
-                    <p className={errorTextStyle}>
-                      {errors.celular_contacto.message}
-                    </p>
-                  )}
-                </div>
+              {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> */}
+              <div className="mb-4">
+                <label
+                  htmlFor="email_contacto"
+                  className="block text-gray-700 font-medium mb-2"
+                >
+                  Correo electrónico de contacto *
+                </label>
+                <Input
+                  type="email"
+                  id="email_contacto"
+                  {...register("email_contacto", {
+                    required: "El correo es obligatorio.",
+                    pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: "Correo electrónico inválido.",
+                    },
+                  })}
+                />
+                {errors.email_contacto && (
+                  <p className={errorTextStyle}>
+                    {errors.email_contacto.message}
+                  </p>
+                )}
               </div>
+
+              <div className="mb-4">
+                <label
+                  htmlFor="celular_contacto"
+                  className="block text-gray-700 font-medium mb-2"
+                >
+                  Celular de contacto *
+                </label>
+                <Input
+                  type="tel"
+                  id="celular_contacto"
+                  {...register("celular_contacto", {
+                    required: "El número de celular es obligatorio.",
+                  })}
+                />
+                {errors.celular_contacto && (
+                  <p className={errorTextStyle}>
+                    {errors.celular_contacto.message}
+                  </p>
+                )}
+              </div>
+              {/* </div> */}
 
               <div className="mb-4">
                 <label
@@ -328,7 +323,6 @@ const InscripcionAcuafitForm: React.FC = () => {
                 <Input
                   type="text"
                   id="direccion_residencia"
-                  
                   {...register("direccion_residencia", {
                     required: "La dirección es obligatoria.",
                   })}
@@ -340,54 +334,50 @@ const InscripcionAcuafitForm: React.FC = () => {
                 )}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="mb-4">
-                  <label
-                    htmlFor="numero_rut"
-                    className="block text-gray-700 font-medium mb-2"
-                  >
-                    Número de RUT *
-                  </label>
-                  <Input
-                    type="text"
-                    id="numero_rut"
-                    placeholder='Si no posee, escriba "No tengo"'
-                    
-                    {...register("numero_rut", {
-                      required: "Este campo es obligatorio.",
-                    })}
-                  />
-                  {errors.numero_rut && (
-                    <p className={errorTextStyle}>
-                      {errors.numero_rut.message}
-                    </p>
-                  )}
-                </div>
-
-                <div className="mb-4">
-                  <label
-                    htmlFor="edad_estudiante"
-                    className="block text-gray-700 font-medium mb-2"
-                  >
-                    Edad del estudiante (años cumplidos) *
-                  </label>
-                  <Input
-                    type="number"
-                    id="edad_estudiante"
-                    
-                    {...register("edad_estudiante", {
-                      required: "La edad es obligatoria.",
-                      valueAsNumber: true,
-                      min: { value: 1, message: "La edad debe ser mayor a 0." },
-                    })}
-                  />
-                  {errors.edad_estudiante && (
-                    <p className={errorTextStyle}>
-                      {errors.edad_estudiante.message}
-                    </p>
-                  )}
-                </div>
+              {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> */}
+              <div className="mb-4">
+                <label
+                  htmlFor="numero_rut"
+                  className="block text-gray-700 font-medium mb-2"
+                >
+                  Número de RUT *
+                </label>
+                <Input
+                  type="text"
+                  id="numero_rut"
+                  placeholder='Si no posee, escriba "No tengo"'
+                  {...register("numero_rut", {
+                    required: "Este campo es obligatorio.",
+                  })}
+                />
+                {errors.numero_rut && (
+                  <p className={errorTextStyle}>{errors.numero_rut.message}</p>
+                )}
               </div>
+
+              <div className="mb-4">
+                <label
+                  htmlFor="edad_estudiante"
+                  className="block text-gray-700 font-medium mb-2"
+                >
+                  Edad del estudiante (años cumplidos) *
+                </label>
+                <Input
+                  type="number"
+                  id="edad_estudiante"
+                  {...register("edad_estudiante", {
+                    required: "La edad es obligatoria.",
+                    valueAsNumber: true,
+                    min: { value: 1, message: "La edad debe ser mayor a 0." },
+                  })}
+                />
+                {errors.edad_estudiante && (
+                  <p className={errorTextStyle}>
+                    {errors.edad_estudiante.message}
+                  </p>
+                )}
+              </div>
+              {/* </div> */}
 
               {/* --- INFORMACIÓN DEL CURSO --- */}
               <div className="mb-4">
@@ -572,10 +562,10 @@ const InscripcionAcuafitForm: React.FC = () => {
 
               {/* --- BOTONES DE ACCIÓN --- */}
               <div className="flex flex-col md:flex-row items-center gap-4 mt-8">
-                <Button type="submit" className="">
+                <Button type="submit" className="bg-primary">
                   Enviar Inscripción
                 </Button>
-                <Button type="reset" className="bg-accent border-2 text:black">
+                <Button type="reset" className="bg-foreground hover:bg-muted-foreground">
                   Limpiar Formulario
                 </Button>
               </div>
