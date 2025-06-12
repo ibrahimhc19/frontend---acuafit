@@ -37,7 +37,7 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
           {/* <Route path="login" element={<Login />} /> */}
           <Route path="login" element={<Login />} />
-          <Route path="registrar" element={<Registration />} />
+          <Route path="registro" element={<Registration />} />
         </Routes>
       </Router>
     </div>
